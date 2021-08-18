@@ -12,7 +12,7 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 ARG INSTALL_AZURE_CLI="false"
 COPY library-scripts/*.sh library-scripts/*.env /tmp/library-scripts/
 RUN if [ "$INSTALL_AZURE_CLI" = "true" ]; then bash /tmp/library-scripts/azcli-debian.sh; fi \
-    && apt-get clean -y && bash /tmp/library-scripts/installdotnet.sh && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
+    && apt-get clean -y && bash /tmp/library-scripts/installdotnet.sh && bash /tmp/library-scripts/installpulumi.sh && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
 RUN npm install -g @azure/static-web-apps-cli
 
