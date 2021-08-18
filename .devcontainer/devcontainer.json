@@ -26,7 +26,16 @@
 		"patcx.vscode-nuget-gallery",
 		"jesschadwick.nuget-reverse-package-search",
 		"adrianwilczynski.add-reference",
-		"ms-vscode.azure-account"
+		"ms-vscode.azure-account",
+		"ms-dotnettools.blazorwasm-companion",
+		"formulahendry.dotnet-test-explorer",
+		"formulahendry.dotnet",
+		"ms-azuretools.vscode-cosmosdb",
+		"ms-azuretools.vscode-azurestorage",
+		"jchannon.csharpextensions",
+		"rangav.vscode-thunder-client",
+		"pflannery.vscode-versionlens",
+		"visualstudioexptteam.vscodeintellicode"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
