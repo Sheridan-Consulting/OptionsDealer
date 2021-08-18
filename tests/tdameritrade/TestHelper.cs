@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using External.Ameritrade.API.Models.Options;
+using TDAmeritrade.Models.Options;
 
 namespace Tests.TDAmeritrade
 {

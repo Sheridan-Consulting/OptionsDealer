@@ -1,8 +1,8 @@
 using System.IO;
 using System.Text.Json;
-using External.Ameritrade.API.Models.Options;
 using Shouldly;
 using Xunit;
+using TDAmeritrade.Models.Options;
 
 namespace Tests.TDAmeritrade
 {
@@ -12,7 +12,7 @@ namespace Tests.TDAmeritrade
         private readonly string _jsonString;
         public OptionChainTests()
         {
-            _jsonString = File.ReadAllText(@"files/optionchain.json");                        
+            _jsonString = File.ReadAllText(@"tdameritrade/files/optionchain.json");                        
             _optionChain = JsonSerializer.Deserialize<OptionChain>(_jsonString);
         }
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using AutoFixture.Xunit2;
-using External.Ameritrade.API.Mappings;
-using External.Ameritrade.API.Models.Options;
+using TDAmeritrade.Mappings;
+using TDAmeritrade.Models.Options;
 using Shouldly;
 using Xunit;
 

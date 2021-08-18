@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Core.Enums;
-using Core.Models;
-using External.Ameritrade.API.Models.Options;
+using Shared.Enums;
+using Shared.Models;
+using TDAmeritrade.Models.Options;
 
 namespace TDAmeritrade.Mappings
 {
@@ -26,7 +26,7 @@ namespace TDAmeritrade.Mappings
             {                
                 foreach(var stikePrice in expDate.Value){
                     foreach(var option in stikePrice.Value){
-                        var optionAdd = new Core.Models.Option(){
+                        var optionAdd = new Shared.Models.Option(){
                             Id=option.Symbol,
                             PutCall = PutCall.PUT,
                             Delta=option.Delta,
