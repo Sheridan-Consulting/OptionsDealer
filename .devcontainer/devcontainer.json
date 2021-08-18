@@ -19,7 +19,14 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-dotnettools.csharp",
-		"github.copilot"
+		"github.copilot",
+		"mcright.auto-save",
+		"ms-azuretools.vscode-azurefunctions",
+		"ms-azuretools.vscode-azurestaticwebapps",
+		"patcx.vscode-nuget-gallery",
+		"jesschadwick.nuget-reverse-package-search",
+		"adrianwilczynski.add-reference",
+		"ms-vscode.azure-account"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
