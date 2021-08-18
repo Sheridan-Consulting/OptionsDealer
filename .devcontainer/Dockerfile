@@ -14,7 +14,9 @@ COPY library-scripts/*.sh library-scripts/*.env /tmp/library-scripts/
 RUN if [ "$INSTALL_AZURE_CLI" = "true" ]; then bash /tmp/library-scripts/azcli-debian.sh; fi \
     && apt-get clean -y && bash /tmp/library-scripts/installdotnet.sh && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
-RUN npm i -g azure-functions-core-tools@4 --unsafe-perm true
+RUN npm install -g @azure/static-web-apps-cli
+
+RUN npm i -g azure-functions-core-tools@3 --unsafe-perm true
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
