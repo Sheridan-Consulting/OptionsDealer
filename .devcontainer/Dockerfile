@@ -18,9 +18,6 @@ RUN npm install -g @azure/static-web-apps-cli
 
 RUN npm i -g azure-functions-core-tools@3 --unsafe-perm true
 
-ENV PulumiPath=/home/vscode/.pulumi/bin
-RUN export PATH=$PATH:$PulumiPath
-
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>

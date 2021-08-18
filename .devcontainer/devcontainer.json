@@ -12,6 +12,12 @@
 			"INSTALL_AZURE_CLI": "true"
 		}
 	},
+	"containerEnv": {
+		"PulumiPath": "/root/.pulumi/bin"
+	},
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/root/.pulumi/bin"		
+	},
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {},
@@ -67,8 +73,9 @@
 	//      "mounts": [ "source=${env:HOME}${env:USERPROFILE}/.aspnet/https,target=/home/vscode/.aspnet/https,type=bind" ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "dotnet restore",
+	//"postCreateCommand": "dotnet restore",
+
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+	//"remoteUser": "vscode"
 }
