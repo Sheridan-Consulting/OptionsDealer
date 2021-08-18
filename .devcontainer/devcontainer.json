@@ -35,7 +35,9 @@
 		"jchannon.csharpextensions",
 		"rangav.vscode-thunder-client",
 		"pflannery.vscode-versionlens",
-		"visualstudioexptteam.vscodeintellicode"
+		"visualstudioexptteam.vscodeintellicode",
+		"ms-azuretools.vscode-azureresourcegroups",
+		"ms-dotnettools.vscode-dotnet-runtime"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
