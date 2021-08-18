@@ -18,7 +18,7 @@ RUN npm install -g @azure/static-web-apps-cli
 
 RUN npm i -g azure-functions-core-tools@3 --unsafe-perm true
 
-RUN export PulumiPath=/home/vscode/.pulumi/bin
+ENV PulumiPath=/home/vscode/.pulumi/bin
 RUN export PATH=$PATH:$PulumiPath
 
 # [Optional] Uncomment this section to install additional OS packages.
