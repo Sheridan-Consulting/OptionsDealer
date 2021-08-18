@@ -1,4 +1,4 @@
 mkdir $HOME/dotnet_install
 cd $HOME/dotnet_install
-curl -L https://aka.ms/install-dotnet-preview -o install-dotnet-preview.sh
-bash install-dotnet-preview.sh 
+curl -L https://dot.net/v1/dotnet-install.sh  -o install-dotnet.sh
+bash install-dotnet.sh -c 3.1
