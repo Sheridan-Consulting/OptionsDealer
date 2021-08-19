@@ -1,6 +1,6 @@
 using System;
-using Shared.Interfaces;
 using Shared.Enums;
+
 namespace Shared.Models
 {
     public class Option

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using shared.Interfaces;
+using Shared.Enums;
 using Shared.Interfaces;
 using Shared.Models;
 
