@@ -30,7 +30,7 @@
 
  
   <ItemGroup>
-    <ProjectReference Include="..\src\tdameritrade\TDAmeritrade.csproj" />
+    <ProjectReference Include="..\src\TDAmeritrade\TDAmeritrade.csproj" />
     <ProjectReference Include="..\src\Shared\Shared.csproj" />
   </ItemGroup>
 

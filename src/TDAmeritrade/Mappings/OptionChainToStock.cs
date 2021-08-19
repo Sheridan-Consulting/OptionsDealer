@@ -6,7 +6,7 @@ namespace TDAmeritrade.Mappings
 {
     public class OptionChainToStock
     {
-        private OptionChain _optionChain;        
+        private readonly OptionChain _optionChain;        
         public OptionChainToStock(OptionChain optionChain)
         {            
             this._optionChain = optionChain;
