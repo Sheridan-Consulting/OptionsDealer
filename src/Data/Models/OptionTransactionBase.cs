@@ -1,6 +1,6 @@
 namespace Data.Models
 {
-    public class OptionTransaction
+    public class OptionTransactionBase
     {
         
     }

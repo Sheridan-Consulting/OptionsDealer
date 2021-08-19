@@ -43,7 +43,8 @@
 		"pflannery.vscode-versionlens",
 		"visualstudioexptteam.vscodeintellicode",
 		"ms-azuretools.vscode-azureresourcegroups",
-		"ms-dotnettools.vscode-dotnet-runtime"
+		"ms-dotnettools.vscode-dotnet-runtime",
+		"fudge.auto-using"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

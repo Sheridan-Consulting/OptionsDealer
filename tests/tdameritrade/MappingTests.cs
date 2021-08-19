@@ -15,11 +15,11 @@ namespace Tests.TDAmeritrade
         {
             _optionChain = TestHelper.CreateOption();
             
-            var put = TestHelper.CreateOption("PUT");
+            var put = TestHelper.CreateOption("Put");
 
             var puts = new Option[] { put };
 
-            var call = TestHelper.CreateOption("CALL");
+            var call = TestHelper.CreateOption("Call");
 
             var calls = new Option[] {call};
 
