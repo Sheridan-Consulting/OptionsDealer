@@ -1,5 +1,6 @@
 using TDAmeritrade.Models.Options;
 using Shared.Models;
+using Shared.Enums;
 
 namespace TDAmeritrade.Mappings
 {
