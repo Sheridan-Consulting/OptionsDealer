@@ -1,7 +1,5 @@
-using System.Collections.Generic;
-using Shared.Enums;
-using Shared.Models;
 using TDAmeritrade.Models.Options;
+using Shared.Models;
 
 namespace TDAmeritrade.Mappings
 {

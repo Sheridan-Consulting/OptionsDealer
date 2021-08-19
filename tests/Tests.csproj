@@ -21,14 +21,17 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\tdameritrade\tdameritrade.csproj" />
-    <ProjectReference Include="..\src\shared\shared.csproj" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <None Update="tdameritrade\files\optionchain.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\src\tdameritrade\TDAmeritrade.csproj" />
+    <ProjectReference Include="..\src\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>
