@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "src\Shared\Shared
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDAmeritrade", "src\TDAmeritrade\TDAmeritrade.csproj", "{5B08751D-A86A-4372-9EFB-5AA412CD9F14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "tests\Tests.csproj", "{02B10D85-1444-4258-8475-39782920F184}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,18 @@ Global
 		{5B08751D-A86A-4372-9EFB-5AA412CD9F14}.Release|x64.Build.0 = Release|Any CPU
 		{5B08751D-A86A-4372-9EFB-5AA412CD9F14}.Release|x86.ActiveCfg = Release|Any CPU
 		{5B08751D-A86A-4372-9EFB-5AA412CD9F14}.Release|x86.Build.0 = Release|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Debug|x64.Build.0 = Debug|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Debug|x86.Build.0 = Debug|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Release|x64.ActiveCfg = Release|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Release|x64.Build.0 = Release|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Release|x86.ActiveCfg = Release|Any CPU
+		{02B10D85-1444-4258-8475-39782920F184}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E7F63D9-8939-4F84-9CE3-4E3559A65516} = {26130F4A-88B3-441E-8CD7-7AF27D42E10E}
