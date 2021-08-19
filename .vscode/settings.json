@@ -3,6 +3,7 @@
     "azureFunctions.projectLanguage": "C#",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
+    "dotnet-test-explorer.testProjectPath": "tests/tests.csproj",
     "azureFunctions.projectSubpath": "src/api",
     "azureFunctions.preDeployTask": "publish (functions)"
 }
