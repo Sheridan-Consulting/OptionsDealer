@@ -52,7 +52,7 @@ namespace TDAmeritrade.Models.Options
     public partial class Option
     {
         [JsonPropertyName("putCall")]
-        public string PutCall { get; set; }
+        public string OptionType { get; set; }
 
         [JsonPropertyName("symbol")]
         public string Symbol { get; set; }

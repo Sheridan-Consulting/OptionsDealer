@@ -40,7 +40,7 @@ namespace Tests.TDAmeritrade
                 OpenPrice=0,
                 OptionDeliverablesList=null,
                 PercentChange=0,
-                PutCall=callOrPut,
+                OptionType=callOrPut,
                 QuoteTimeInLong=1625255999882,
                 Rho=-999,
                 SettlementType="",

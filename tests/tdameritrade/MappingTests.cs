@@ -89,7 +89,7 @@ namespace Tests.TDAmeritrade
 
             var stock = mapper.MapToStock();
 
-            stock.Options[0].PutCall.ToString().ShouldBe(GetPutOption().PutCall);
+            stock.Options[0].OptionType.ToString().ShouldBe(GetPutOption().OptionType);
         }
          [Fact]
         public void CheckStock_Map_Delta()

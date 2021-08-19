@@ -4,8 +4,8 @@ using Shared.Enums;
 namespace Shared.Models
 {
     public class Option
-    {       
-        public PutCall PutCall { get; set; }
+    {      
+       
         public string Symbol { get; set; }
         public string Id {get;set;}
         public double StrikePrice { get; init; }
