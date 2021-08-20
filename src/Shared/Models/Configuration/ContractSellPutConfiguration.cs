@@ -1,6 +1,6 @@
-namespace Shared.Models
+namespace Shared.Models.Configuration
 {
-    public class ContractSellConfiguration
+    public class ContractSellPutConfiguration
     {
         public double LessThanDelta { get; set; }
         public double GreaterThanPercentageOfPrice { get; set; }

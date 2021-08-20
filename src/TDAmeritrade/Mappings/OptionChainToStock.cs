@@ -27,7 +27,7 @@ namespace TDAmeritrade.Mappings
                     foreach(var option in stikePrice.Value){
                         var optionAdd = new Shared.Models.Option(){
                             Id=option.Symbol,
-                            OptionType = OptionType.Put,
+                            Type = OptionType.Put,
                             Delta=option.Delta,
                             Vega=option.Vega,
                             ImpliedVolatility=option.Volatility,
