@@ -23,7 +23,7 @@ namespace Tests.Shared.Interfaces.IOptionTrader
         } 
 
         [Theory,AutoData]
-        public void Should_Return_One_Options(Option option1)
+        public void Given_CorrectStrikePrice_Should_ReturnOneOptions(Option option1)
         {   
             ContractSellCallConfiguration config = new(){
                 StrikePricePercentageOfCost=1.1
