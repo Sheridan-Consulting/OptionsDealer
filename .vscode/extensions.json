@@ -1,6 +1,20 @@
 {
   "recommendations": [
     "ms-azuretools.vscode-azurefunctions",
-    "ms-dotnettools.csharp"
+    "ms-dotnettools.csharp",
+		"github.copilot",
+		"mcright.auto-save",
+		"patcx.vscode-nuget-gallery",
+		"jesschadwick.nuget-reverse-package-search",
+		"adrianwilczynski.add-reference",
+		"ms-dotnettools.blazorwasm-companion",
+		"formulahendry.dotnet-test-explorer",
+		"formulahendry.dotnet",
+		"jchannon.csharpextensions",
+		"rangav.vscode-thunder-client",
+		"pflannery.vscode-versionlens",
+		"visualstudioexptteam.vscodeintellicode",
+		"ms-dotnettools.vscode-dotnet-runtime",
+		"fudge.auto-using"
   ]
 }
