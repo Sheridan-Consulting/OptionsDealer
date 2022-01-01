@@ -33,7 +33,7 @@ namespace Tests.TDAmeritrade
             return _optionChain.Puts["2021-07-09:5"]["138.0"][0];
         }
 
-        [Theory,AutoData]
+        [Theory, AutoData]
         public void CheckStock_NotNull(OptionChain optionChain)
         {
             var mapper = new OptionChainToStock(optionChain);
