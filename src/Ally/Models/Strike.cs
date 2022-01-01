@@ -10,7 +10,7 @@ namespace Ally.Models
 
         [JsonPropertyName("ask_time")] public string AskTime { get; set; }
 
-        [JsonPropertyName("asksz")] public string Asksz { get; set; }
+        [JsonPropertyName("asksz")] public string AskSize { get; set; }
 
         [JsonPropertyName("basis")] public string Basis { get; set; }
 
@@ -18,15 +18,15 @@ namespace Ally.Models
 
         [JsonPropertyName("bid_time")] public string BidTime { get; set; }
 
-        [JsonPropertyName("bidsz")] public string Bidsz { get; set; }
+        [JsonPropertyName("bidsz")] public string BidSize { get; set; }
 
-        [JsonPropertyName("chg")] public string Chg { get; set; }
+        [JsonPropertyName("chg")] public string ChangeSincePriorDayClose { get; set; }
 
-        [JsonPropertyName("chg_sign")] public string ChgSign { get; set; }
+        [JsonPropertyName("chg_sign")] public string ChangeSign { get; set; }
 
-        [JsonPropertyName("chg_t")] public string ChgT { get; set; }
+        [JsonPropertyName("chg_t")] public string ChangeSincePriorDayCloseText { get; set; }
 
-        [JsonPropertyName("cl")] public string Cl { get; set; }
+        [JsonPropertyName("cl")] public string PreviousClose { get; set; }
 
         [JsonPropertyName("contract_size")] public string ContractSize { get; set; }
 
@@ -37,61 +37,61 @@ namespace Ally.Models
         [JsonPropertyName("days_to_expiration")]
         public string DaysToExpiration { get; set; }
 
-        [JsonPropertyName("exch")] public string Exch { get; set; }
+        [JsonPropertyName("exch")] public string ExchangeCode { get; set; }
 
-        [JsonPropertyName("exch_desc")] public string ExchDesc { get; set; }
+        [JsonPropertyName("exch_desc")] public string ExchangeDescription { get; set; }
 
-        [JsonPropertyName("hi")] public string Hi { get; set; }
+        [JsonPropertyName("hi")] public string HighTradePriceForDay { get; set; }
 
-        [JsonPropertyName("incr_vl")] public string IncrVl { get; set; }
+        [JsonPropertyName("incr_vl")] public string VolumeOfLastTrade { get; set; }
 
-        [JsonPropertyName("issue_desc")] public string IssueDesc { get; set; }
+        [JsonPropertyName("issue_desc")] public string IssueDescription { get; set; }
 
-        [JsonPropertyName("last")] public string Last { get; set; }
+        [JsonPropertyName("last")] public string LastPrice { get; set; }
 
-        [JsonPropertyName("lo")] public string Lo { get; set; }
+        [JsonPropertyName("lo")] public string LowTradePriceForDay { get; set; }
 
-        [JsonPropertyName("op_delivery")] public string OpDelivery { get; set; }
+        [JsonPropertyName("op_delivery")] public string OptionSettlementDesignation  { get; set; }
 
-        [JsonPropertyName("op_flag")] public string OpFlag { get; set; }
+        [JsonPropertyName("op_flag")] public string HasOption { get; set; }
 
-        [JsonPropertyName("op_style")] public string OpStyle { get; set; }
+        [JsonPropertyName("op_style")] public string OptionStyle { get; set; }
 
         [JsonPropertyName("op_subclass")] public string OpSubclass { get; set; }
 
-        [JsonPropertyName("opn")] public string Opn { get; set; }
+        [JsonPropertyName("opn")] public string OpenTradePrice { get; set; }
 
-        [JsonPropertyName("pchg")] public string Pchg { get; set; }
+        [JsonPropertyName("pchg")] public string PercentChangeFromPriorDay { get; set; }
 
-        [JsonPropertyName("pchg_sign")] public string PchgSign { get; set; }
+        [JsonPropertyName("pchg_sign")] public string PriorDayChangeSignal { get; set; }
 
-        [JsonPropertyName("pcls")] public string Pcls { get; set; }
+        [JsonPropertyName("pcls")] public string PriorDayClose { get; set; }
 
-        [JsonPropertyName("phi")] public string Phi { get; set; }
+        [JsonPropertyName("phi")] public string PriorDayHigh { get; set; }
 
-        [JsonPropertyName("plo")] public string Plo { get; set; }
+        [JsonPropertyName("plo")] public string PriorDayLow { get; set; }
 
-        [JsonPropertyName("popn")] public string Popn { get; set; }
+        [JsonPropertyName("popn")] public string PriorDayOpen { get; set; }
 
-        [JsonPropertyName("pr_date")] public string PrDate { get; set; }
+        [JsonPropertyName("pr_date")] public string PriorDate { get; set; }
 
-        [JsonPropertyName("pr_openinterest")] public string PrOpeninterest { get; set; }
+        [JsonPropertyName("pr_openinterest")] public string PriorDayOpenInterest { get; set; }
 
-        [JsonPropertyName("prchg")] public string Prchg { get; set; }
+        [JsonPropertyName("prchg")] public string PriorDayChange { get; set; }
 
-        [JsonPropertyName("prem_mult")] public string PremMult { get; set; }
+        [JsonPropertyName("prem_mult")] public string PremiumMultiplier { get; set; }
 
-        [JsonPropertyName("put_call")] public string PutCall { get; set; }
+        [JsonPropertyName("put_call")] public string PutOrCall { get; set; }
 
-        [JsonPropertyName("pvol")] public string Pvol { get; set; }
+        [JsonPropertyName("pvol")] public string PriorDayTotalVolume { get; set; }
 
         [JsonPropertyName("rootsymbol")] public string Symbol { get; set; }
 
-        [JsonPropertyName("secclass")] public string Secclass { get; set; }
+        [JsonPropertyName("secclass")] public string SecurityClass { get; set; }
 
         [JsonPropertyName("sesn")] public string Sesn { get; set; }
 
-        [JsonPropertyName("strikeprice")] public string Strikeprice { get; set; }
+        [JsonPropertyName("strikeprice")] public string StrikePrice { get; set; }
 
         [JsonPropertyName("symbol")] public string OptionSymbol { get; set; }
 
@@ -99,17 +99,17 @@ namespace Ally.Models
 
         [JsonPropertyName("timestamp")] public string Timestamp { get; set; }
 
-        [JsonPropertyName("tr_num")] public string TrNum { get; set; }
+        [JsonPropertyName("tr_num")] public string NumberOfTradesSinceMarketOpen { get; set; }
 
-        [JsonPropertyName("tradetick")] public string Tradetick { get; set; }
+        [JsonPropertyName("tradetick")] public string TickDirectionFromPriorTrade { get; set; }
 
-        [JsonPropertyName("under_cusip")] public string UnderCusip { get; set; }
+        [JsonPropertyName("under_cusip")] public string UnderlyingCusip { get; set; }
 
-        [JsonPropertyName("undersymbol")] public string Undersymbol { get; set; }
+        [JsonPropertyName("undersymbol")] public string UnderlyingSymbol { get; set; }
 
-        [JsonPropertyName("vl")] public string Vl { get; set; }
+        [JsonPropertyName("vl")] public string CumulativeVolume { get; set; }
 
-        [JsonPropertyName("vwap")] public string Vwap { get; set; }
+        [JsonPropertyName("vwap")] public string VolumeWeightedAveragePrice { get; set; }
 
         [JsonPropertyName("wk52hi")] public string Wk52hi { get; set; }
 
@@ -119,27 +119,27 @@ namespace Ally.Models
 
         [JsonPropertyName("wk52lodate")] public string Wk52lodate { get; set; }
 
-        [JsonPropertyName("xdate")] public string Xdate { get; set; }
+        [JsonPropertyName("xdate")] public string ExpriationDate { get; set; }
 
-        [JsonPropertyName("xday")] public string Xday { get; set; }
+        [JsonPropertyName("xday")] public string ExpirationDay { get; set; }
 
-        [JsonPropertyName("xmonth")] public string Xmonth { get; set; }
+        [JsonPropertyName("xmonth")] public string ExperiationMonth { get; set; }
 
-        [JsonPropertyName("xyear")] public string Xyear { get; set; }
+        [JsonPropertyName("xyear")] public string ExperationYear { get; set; }
 
-        [JsonPropertyName("imp_Volatility")] public string ImpVolatility { get; set; }
+        [JsonPropertyName("imp_Volatility")] public string ImpliedVolatily { get; set; }
 
-        [JsonPropertyName("idelta")] public string Idelta { get; set; }
+        [JsonPropertyName("idelta")] public string Delta { get; set; }
 
-        [JsonPropertyName("igamma")] public string Igamma { get; set; }
+        [JsonPropertyName("igamma")] public string Gamma { get; set; }
 
-        [JsonPropertyName("itheta")] public string Itheta { get; set; }
+        [JsonPropertyName("itheta")] public string Theta { get; set; }
 
-        [JsonPropertyName("ivega")] public string Ivega { get; set; }
+        [JsonPropertyName("ivega")] public string Vega { get; set; }
 
-        [JsonPropertyName("irho")] public string Irho { get; set; }
+        [JsonPropertyName("irho")] public string RHO { get; set; }
 
-        [JsonPropertyName("openinterest")] public string Openinterest { get; set; }
+        [JsonPropertyName("openinterest")] public string OpenInterest { get; set; }
 
     }
 }
