@@ -23,6 +23,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\src\Ally\Ally.csproj" />
 		<ProjectReference Include="..\src\TDAmeritrade\TDAmeritrade.csproj" />
 		<ProjectReference Include="..\src\Shared\Shared.csproj" />
 	</ItemGroup>
