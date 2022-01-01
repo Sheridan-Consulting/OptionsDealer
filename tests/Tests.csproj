@@ -21,6 +21,9 @@
 		<None Update="tdameritrade\files\optionchain.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="ally\files\response.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\src\Ally\Ally.csproj" />
