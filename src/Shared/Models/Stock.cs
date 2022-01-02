@@ -9,7 +9,7 @@ namespace Shared.Models
             Options = new List<Option>();
         }
         public string Symbol { get; set; }
-        public double Price { get; set; }
+        public double? Price { get; set; }
         public double Cost { get; set; }
 
         public List<Option> Options { get; set; }
