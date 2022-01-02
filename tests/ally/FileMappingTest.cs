@@ -14,7 +14,7 @@ public class AllyFileMappingTest
     private readonly Strike _singleStrike;
     public AllyFileMappingTest()
     {
-        _jsonString = File.ReadAllText(@"ally/files/response.json");                        
+        _jsonString = File.ReadAllText(@"ally/files/option.json");                        
         _optionChain = JsonSerializer.Deserialize<AllyOptionChain>(_jsonString);
         _singleStrike = _optionChain.Response.Quotes.Strikes[0];
     }
