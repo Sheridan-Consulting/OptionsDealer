@@ -26,7 +26,7 @@ public static class OptionRulesExtension
 
     public static Stock RulePremiumPercentage(this Stock stock, double percentage)
     {
-        stock.Options =  stock.Options.Where(x => x.Mid > (x.StrikePrice * percentage)).ToList();
+        stock.Options =  stock.Options.Where(x => x.Mid >= (x.StrikePrice * percentage)).ToList();
         return stock;
     }
 }
