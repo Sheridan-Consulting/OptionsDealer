@@ -1,11 +1,20 @@
 using System;
 using System.Linq;
 using Shared.Models;
+using Shared.Models.Rules;
 
 namespace Shared.Extensions;
 
 public static class OptionRulesExtension
 {
+    public static Stock RuleRunAll(this Stock stock, OptionRuleParameters parameters)
+    {
+        var validOptions = stock.RuleInTheMoney().RuleOpenInterest(parameters.MinOpenInterest)
+            .RulePremiumPercentage(parameters.PremiumPercentage)
+            .RuleChanceOfAssignment(parameters.AssignmentPercentage);
+
+        return validOptions;
+    }
     public static Stock RuleChanceOfAssignment(this Stock stock, double percentage)
     {
         stock.Options =  stock.Options.Where(x => Math.Abs(x.Delta) < percentage).ToList();

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Shared.Extensions;
 using Shared.Models;
+using Shared.Models.Rules;
 using Shouldly;
 using Xunit;
 
@@ -158,29 +159,39 @@ public class OptionRuleExtensionTests
 
     [Theory]
     [InlineData(.33,29,true,-.1486,2946,100,.01,.2)]
-    public void OptionRule_SatisfiesConditions_ShouldReturnOne(double mid, double strike, bool inTheMoney, double delta,int openInterest,
+    public void OptionRuleRunAll_SatisfiesConditions_ShouldReturnOne(double mid, double strike, bool inTheMoney, double delta,int openInterest,
         int openInterestLimit, double premiumPercentage, double chanceOfAssignment)
     {
         var option = new Option()
             {Mid = mid, StrikePrice = strike, InTheMoney = inTheMoney, Delta = delta, OpenInterest = openInterest};
         _stock.Options.Add(option);
 
-        var validOptions = _stock.RuleInTheMoney().RuleOpenInterest(openInterestLimit)
-            .RulePremiumPercentage(premiumPercentage).RuleChanceOfAssignment(chanceOfAssignment);
+        var optionParams = new OptionRuleParameters()
+        {
+            AssignmentPercentage = chanceOfAssignment, PremiumPercentage = premiumPercentage,
+            MinOpenInterest = openInterestLimit
+        };
+
+        var validOptions = _stock.RuleRunAll(optionParams);
         
         validOptions.Options.Count.ShouldBe(1);
     }
     [Theory]
     [InlineData(.05,23,true,-.0028,528,100,.01,.2)]
-    public void OptionRule_DoesNotSatisfiesConditions_ShouldReturnNone(double mid, double strike, bool inTheMoney, double delta,int openInterest,
+    public void OptionRuleRunAll_DoesNotSatisfiesConditions_ShouldReturnNone(double mid, double strike, bool inTheMoney, double delta,int openInterest,
         int openInterestLimit, double premiumPercentage, double chanceOfAssignment)
     {
         var option = new Option()
             {Mid = mid, StrikePrice = strike, InTheMoney = inTheMoney, Delta = delta, OpenInterest = openInterest};
         _stock.Options.Add(option);
+        
+        var optionParams = new OptionRuleParameters()
+        {
+            AssignmentPercentage = chanceOfAssignment, PremiumPercentage = premiumPercentage,
+            MinOpenInterest = openInterestLimit
+        };
 
-        var validOptions = _stock.RuleInTheMoney().RuleOpenInterest(openInterestLimit)
-            .RulePremiumPercentage(premiumPercentage).RuleChanceOfAssignment(chanceOfAssignment);
+        var validOptions = _stock.RuleRunAll(optionParams);
         
         validOptions.Options.Count.ShouldBe(0);
     }
