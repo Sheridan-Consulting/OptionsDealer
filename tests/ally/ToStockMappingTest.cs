@@ -114,8 +114,7 @@ public class ToStockMappingTest
     {
         _stock.Options[0].InTheMoney.ShouldBeTrue();
     }
-
-    // TODO: Need to pull in Stock Price from another call
+    
     [Fact]
     public void Mapped_Price()
     {
