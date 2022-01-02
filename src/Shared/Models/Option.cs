@@ -22,7 +22,7 @@ namespace Shared.Models
          public int DaysToExpiration { get; set; }
         public bool InTheMoney { get; set; }
         public double ImpliedVolatility { get; set; }
-        public OptionType Type {get;set;}
+        public OptionType? Type {get;set;}
 
     }
 }
