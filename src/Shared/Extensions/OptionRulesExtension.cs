@@ -11,7 +11,8 @@ public static class OptionRulesExtension
     {
         var validOptions = stock.RuleInTheMoney().RuleOpenInterest(parameters.MinOpenInterest)
             .RulePremiumPercentage(parameters.PremiumPercentage)
-            .RuleChanceOfAssignment(parameters.AssignmentPercentage);
+            .RuleChanceOfAssignment(parameters.AssignmentPercentage)
+            .RuleDaysToExpiration(parameters.DaysToExpiration);
 
         return validOptions;
     }
@@ -36,6 +37,12 @@ public static class OptionRulesExtension
     public static Stock RulePremiumPercentage(this Stock stock, double percentage)
     {
         stock.Options =  stock.Options.Where(x => x.Mid >= (x.StrikePrice * percentage)).ToList();
+        return stock;
+    }
+
+    public static Stock RuleDaysToExpiration(this Stock stock, int daysToExpiration)
+    {
+        stock.Options = stock.Options.Where(x => x.DaysToExpiration < daysToExpiration).ToList();
         return stock;
     }
 }

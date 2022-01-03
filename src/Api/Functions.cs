@@ -16,10 +16,7 @@ public class Functions
     public async Task<HttpResponseData> Option_GetOptionToBuy([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "options/tobuy/{symbol}")] HttpRequestData req,string symbol)
     {
         var stock = _optionTrader.GetAllStockInfo(symbol);
-        //var logger = req.FunctionContext.GetLogger("HttpFunction");
-        //logger.LogInformation(JsonSerializer.Serialize(stock));
-       
-       // var optionsToBuy = _optionTrader.FindOptionsToBuy(stock);
+        var optionsToBuy = _optionTrader.FindOptionsToBuy(stock);
         return await req.OkObjectResponse(stock);
     }
     

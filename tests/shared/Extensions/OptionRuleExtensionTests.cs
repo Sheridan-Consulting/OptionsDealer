@@ -119,6 +119,26 @@ public class OptionRuleExtensionTests
         ruleTest.Options.Count.ShouldBe(0);
     }
     [Fact]
+    public void DaysToExpiration_OneOptionBelow_ShouldBeOne()
+    {
+        var option1 = new Option() {DaysToExpiration = 6};
+        _stock.Options.Add(option1);
+
+        var ruleTest = _stock.RuleDaysToExpiration(14);
+        
+        ruleTest.Options.Count.ShouldBe(1);
+    }
+    [Fact]
+    public void DaysToExpiration_OneOptionAbove_ShouldBeNone()
+    {
+        var option1 = new Option() {DaysToExpiration = 30};
+        _stock.Options.Add(option1);
+
+        var ruleTest = _stock.RuleDaysToExpiration(14);
+        
+        ruleTest.Options.Count.ShouldBe(0);
+    }
+    [Fact]
     public void OpenInterest_TwoOptions_OneOpenInterestBelowLimit()
     {
         var option1 = new Option() {OpenInterest = 50};
@@ -158,18 +178,18 @@ public class OptionRuleExtensionTests
     }
 
     [Theory]
-    [InlineData(.33,29,true,-.1486,2946,100,.01,.2)]
-    public void OptionRuleRunAll_SatisfiesConditions_ShouldReturnOne(double mid, double strike, bool inTheMoney, double delta,int openInterest,
-        int openInterestLimit, double premiumPercentage, double chanceOfAssignment)
+    [InlineData(.33,29,true,14,-.1486,2946,100,.01,.2,7)]
+    public void OptionRuleRunAll_SatisfiesConditions_ShouldReturnOne(double mid, double strike, bool inTheMoney,int daysToExpirationLimit, double delta,int openInterest,
+        int openInterestLimit, double premiumPercentage, double chanceOfAssignment,int daysToExpiration)
     {
         var option = new Option()
-            {Mid = mid, StrikePrice = strike, InTheMoney = inTheMoney, Delta = delta, OpenInterest = openInterest};
+            {Mid = mid, StrikePrice = strike, InTheMoney = inTheMoney, Delta = delta, OpenInterest = openInterest,DaysToExpiration = daysToExpiration};
         _stock.Options.Add(option);
 
         var optionParams = new OptionRuleParameters()
         {
             AssignmentPercentage = chanceOfAssignment, PremiumPercentage = premiumPercentage,
-            MinOpenInterest = openInterestLimit
+            MinOpenInterest = openInterestLimit,DaysToExpiration = daysToExpirationLimit
         };
 
         var validOptions = _stock.RuleRunAll(optionParams);
@@ -177,18 +197,18 @@ public class OptionRuleExtensionTests
         validOptions.Options.Count.ShouldBe(1);
     }
     [Theory]
-    [InlineData(.05,23,true,-.0028,528,100,.01,.2)]
-    public void OptionRuleRunAll_DoesNotSatisfiesConditions_ShouldReturnNone(double mid, double strike, bool inTheMoney, double delta,int openInterest,
-        int openInterestLimit, double premiumPercentage, double chanceOfAssignment)
+    [InlineData(.05,23,true,14,-.0028,528,100,.01,.2,30)]
+    public void OptionRuleRunAll_DoesNotSatisfiesConditions_ShouldReturnNone(double mid, double strike, bool inTheMoney,int daysToExpirationLimit, double delta,int openInterest,
+        int openInterestLimit, double premiumPercentage, double chanceOfAssignment,int daysToExpiration)
     {
         var option = new Option()
-            {Mid = mid, StrikePrice = strike, InTheMoney = inTheMoney, Delta = delta, OpenInterest = openInterest};
+            {Mid = mid, StrikePrice = strike, InTheMoney = inTheMoney, Delta = delta, OpenInterest = openInterest,DaysToExpiration = daysToExpiration};
         _stock.Options.Add(option);
         
         var optionParams = new OptionRuleParameters()
         {
             AssignmentPercentage = chanceOfAssignment, PremiumPercentage = premiumPercentage,
-            MinOpenInterest = openInterestLimit
+            MinOpenInterest = openInterestLimit,DaysToExpiration = daysToExpirationLimit
         };
 
         var validOptions = _stock.RuleRunAll(optionParams);

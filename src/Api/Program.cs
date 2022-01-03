@@ -20,8 +20,9 @@ namespace api
                 .ConfigureAppConfiguration(c =>
                 {
                     c.SetBasePath(Directory.GetCurrentDirectory());
-                    c.AddJsonFile("local.settings.json", optional: true);
+                   
                     c.AddJsonFile("appsettings.json", optional: true);
+                    c.AddJsonFile("local.settings.json", optional: true);
                 })
                 .ConfigureServices((hostContext,s) =>
                 {
