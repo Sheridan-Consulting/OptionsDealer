@@ -1,7 +1,8 @@
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+using Ally;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Azure.Functions.Worker.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Shared.Interfaces;
+using Shared.Services;
 
 namespace api
 {
@@ -11,6 +12,11 @@ namespace api
         {
             var host = new HostBuilder()
                 .ConfigureFunctionsWorkerDefaults()
+                .ConfigureServices(s =>
+                {
+                    s.AddSingleton<IBrokerageService, AllyBrokerageService>();
+                    s.AddSingleton<IOptionTrader, OptionTrader>();
+                })
                 .Build();
 
             host.Run();
