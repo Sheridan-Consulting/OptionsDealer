@@ -7,7 +7,8 @@ namespace Shared.Interfaces
 {
     public interface IOptionTrader
     {
-        Stock FindOptionsToBuy(Stock symbol, OptionRuleParameters parameters);
+        Stock FindOptionsToBuy(Stock stock, OptionRuleParameters parameters);
+        Stock FindOptionsToBuy(Stock stock);
         Stock GetAllStockInfo(string symbol);
         OptionTransaction SellPutOptionContract(Stock stock, ContractSellCallConfiguration configuration);
         Stock SellCallOptionContract(Stock stock, ContractSellCallConfiguration configuration);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 using Shared.Enums;
 using Shared.Extensions;
 using Shared.Interfaces;
@@ -12,10 +13,12 @@ namespace Shared.Services
     public class OptionTrader : IOptionTrader
     {
         private readonly IBrokerageService _brokerageService;
+        private readonly IOptions<AppSettingsConfiguration> _options;
 
-        public OptionTrader(IBrokerageService brokerageService)
+        public OptionTrader(IBrokerageService brokerageService,IOptions<AppSettingsConfiguration> options)
         {
             _brokerageService = brokerageService;
+            _options = options;
         }
         public OptionTrader()
         {
@@ -56,6 +59,10 @@ namespace Shared.Services
         public Stock FindOptionsToBuy(Stock stock, OptionRuleParameters parameters)
         {
             return stock.RuleRunAll(parameters);
+        }
+        public Stock FindOptionsToBuy(Stock stock)
+        {
+            return stock.RuleRunAll(_options.Value.OptionRuleParameters);
         }
 
         public Stock GetAllStockInfo(string symbol)
