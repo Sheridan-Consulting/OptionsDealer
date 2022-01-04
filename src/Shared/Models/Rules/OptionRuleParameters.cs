@@ -7,4 +7,6 @@ public class OptionRuleParameters
     public double PremiumPercentage { get; set; }
     public int DaysToExpiration { get; set; }
     public double MinimumPremium { get; set; }
+    public bool Calls { get; set; }
+    public bool Puts { get; set; }
 }

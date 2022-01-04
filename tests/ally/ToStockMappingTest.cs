@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using Ally.Mapping;
 using Ally.Models;
@@ -73,6 +74,19 @@ public class ToStockMappingTest
     public void OptionMapped_Type()
     {
         _stock.Options[0].Type.ShouldBeOneOf(OptionType.Call,OptionType.Put);;
+    }
+
+    [Fact]
+    public void OptionMapped_Type_ContainsPut()
+    {
+        var puts = _stock.Options.Where(x => x.Type == OptionType.Put);
+        puts.Count().ShouldBeGreaterThan(0);
+    }
+    [Fact]
+    public void OptionMapped_Type_ContainsCall()
+    {
+        var puts = _stock.Options.Where(x => x.Type == OptionType.Call);
+        puts.Count().ShouldBeGreaterThan(0);
     }
     [Fact]
     public void OptionMapped_Vega()

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Shared.Enums;
 using Shared.Extensions;
 using Shared.Models;
 using Shared.Models.Rules;
@@ -148,6 +149,38 @@ public class OptionRuleExtensionTests
         var ruleTest = _stock.RuleMinPremium(1);
         
         ruleTest.Options.Count.ShouldBe(1);
+    }
+    [Fact]
+    public void OptionType_OneCallOption_ShouldBeOne()
+    {
+        var option1 = new Option() {Type = OptionType.Call};
+        _stock.Options.Add(option1);
+
+        var ruleTest = _stock.RuleOptionType(true,false);
+        
+        ruleTest.Options.Count.ShouldBe(1);
+    }
+    [Fact]
+    public void OptionType_OnePutOption_ShouldBeOne()
+    {
+        var option1 = new Option() {Type = OptionType.Put};
+        _stock.Options.Add(option1);
+
+        var ruleTest = _stock.RuleOptionType(false,true);
+        
+        ruleTest.Options.Count.ShouldBe(1);
+    }
+    [Fact]
+    public void OptionType_OnePutAndCallOption_ShouldBeTwo()
+    {
+        var option1 = new Option() {Type = OptionType.Put};
+        _stock.Options.Add(option1);
+        var option2 = new Option() {Type = OptionType.Call};
+        _stock.Options.Add(option2);
+
+        var ruleTest = _stock.RuleOptionType(true,true);
+        
+        ruleTest.Options.Count.ShouldBe(2);
     }
     
     [Fact]

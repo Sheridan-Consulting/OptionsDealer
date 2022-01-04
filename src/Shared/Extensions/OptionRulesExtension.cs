@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Shared.Enums;
 using Shared.Models;
 using Shared.Models.Rules;
 
@@ -13,9 +14,20 @@ public static class OptionRulesExtension
             .RulePremiumPercentage(parameters.PremiumPercentage)
             .RuleChanceOfAssignment(parameters.AssignmentPercentage)
             .RuleDaysToExpiration(parameters.DaysToExpiration)
-            .RuleMinPremium(parameters.MinimumPremium);
+            .RuleMinPremium(parameters.MinimumPremium)
+            .RuleOptionType(parameters.Calls, parameters.Puts);
 
         return validOptions;
+    }
+
+    public static Stock RuleOptionType(this Stock stock,bool calls,bool puts)
+    {
+        if (calls && puts) return stock;
+        
+        if (calls) stock.Options =  stock.Options.Where(x => x.Type == OptionType.Call).ToList();
+        else if (puts) stock.Options =  stock.Options.Where(x => x.Type == OptionType.Put).ToList();
+
+        return stock;
     }
     public static Stock RuleChanceOfAssignment(this Stock stock, double percentage)
     {
@@ -43,7 +55,7 @@ public static class OptionRulesExtension
 
     public static Stock RulePremiumPercentage(this Stock stock, double percentage)
     {
-        stock.Options =  stock.Options.Where(x => x.Mid >= (x.StrikePrice * percentage)).ToList();
+        stock.Options =  stock.Options.Where(x => x.Mid >= (x.StrikePrice * (percentage/100))).ToList();
         return stock;
     }
 

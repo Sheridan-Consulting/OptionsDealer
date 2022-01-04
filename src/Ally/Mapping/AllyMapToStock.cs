@@ -46,7 +46,7 @@ public class AllyMapToStock
                 OpenInterest = Convert.ToInt32(strike.OpenInterest),
                 StrikePrice = Convert.ToDouble(strike.StrikePrice),
                 DaysToExpiration = Convert.ToInt32(strike.DaysToExpiration),
-                Type = strike.PutOrCall == "Put" ? OptionType.Put : OptionType.Call,
+                Type = (strike.PutOrCall == "call" ? OptionType.Call : OptionType.Put),
                 InTheMoney = !(Convert.ToDouble(strike.StrikePrice) > stock.Price.Value)
             });
         }
