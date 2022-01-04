@@ -6,4 +6,5 @@ public class OptionRuleParameters
     public int MinOpenInterest { get; set; }
     public double PremiumPercentage { get; set; }
     public int DaysToExpiration { get; set; }
+    public double MinimumPremium { get; set; }
 }

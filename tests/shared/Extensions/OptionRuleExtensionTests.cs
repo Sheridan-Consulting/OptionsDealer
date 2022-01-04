@@ -138,6 +138,29 @@ public class OptionRuleExtensionTests
         
         ruleTest.Options.Count.ShouldBe(0);
     }
+
+    [Fact]
+    public void MinimumPremium_OneOptionAbove_ShouldBeOne()
+    {
+        var option1 = new Option() {Mid = 1};
+        _stock.Options.Add(option1);
+
+        var ruleTest = _stock.RuleMinPremium(1);
+        
+        ruleTest.Options.Count.ShouldBe(1);
+    }
+    
+    [Fact]
+    public void MinimumPremium_OneOptionBelow_ShouldBeNone()
+    {
+        var option1 = new Option() {Mid = 1};
+        _stock.Options.Add(option1);
+
+        var ruleTest = _stock.RuleMinPremium(2);
+        
+        ruleTest.Options.Count.ShouldBe(0);
+    }
+    
     [Fact]
     public void OpenInterest_TwoOptions_OneOpenInterestBelowLimit()
     {
@@ -197,18 +220,18 @@ public class OptionRuleExtensionTests
         validOptions.Options.Count.ShouldBe(1);
     }
     [Theory]
-    [InlineData(.05,23,true,14,-.0028,528,100,.01,.2,30)]
-    public void OptionRuleRunAll_DoesNotSatisfiesConditions_ShouldReturnNone(double mid, double strike, bool inTheMoney,int daysToExpirationLimit, double delta,int openInterest,
-        int openInterestLimit, double premiumPercentage, double chanceOfAssignment,int daysToExpiration)
+    [InlineData(14,100,.01,.2,.05)]
+    public void OptionRuleRunAll_DoesNotSatisfiesConditions_ShouldReturnNone(int daysToExpirationLimit,
+        int openInterestLimit, double premiumPercentage, double chanceOfAssignment,double minPremium)
     {
         var option = new Option()
-            {Mid = mid, StrikePrice = strike, InTheMoney = inTheMoney, Delta = delta, OpenInterest = openInterest,DaysToExpiration = daysToExpiration};
+            {Mid = .05, StrikePrice = 23, InTheMoney = true, Delta = -.0028, OpenInterest = 528,DaysToExpiration = 30};
         _stock.Options.Add(option);
         
         var optionParams = new OptionRuleParameters()
         {
             AssignmentPercentage = chanceOfAssignment, PremiumPercentage = premiumPercentage,
-            MinOpenInterest = openInterestLimit,DaysToExpiration = daysToExpirationLimit
+            MinOpenInterest = openInterestLimit,DaysToExpiration = daysToExpirationLimit,MinimumPremium = minPremium
         };
 
         var validOptions = _stock.RuleRunAll(optionParams);
