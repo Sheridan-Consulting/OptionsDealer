@@ -31,7 +31,7 @@ public static class OptionRulesExtension
     }
     public static Stock RuleChanceOfAssignment(this Stock stock, double percentage)
     {
-        stock.Options =  stock.Options.Where(x => Math.Abs(x.Delta) < percentage).ToList();
+        stock.Options =  stock.Options.Where(x => Math.Abs(x.Delta) <= percentage).ToList();
         return stock;
     }
 
@@ -55,7 +55,7 @@ public static class OptionRulesExtension
 
     public static Stock RulePremiumPercentage(this Stock stock, double percentage)
     {
-        stock.Options =  stock.Options.Where(x => x.Mid >= (x.StrikePrice * (percentage/100))).ToList();
+        stock.Options =  stock.Options.Where(x => x.Mid >= (x.StrikePrice * percentage)).ToList();
         return stock;
     }
 

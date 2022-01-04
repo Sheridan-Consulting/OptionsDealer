@@ -233,6 +233,37 @@ public class OptionRuleExtensionTests
         ruleTest.Options.Count.ShouldBe(0);
     }
 
+    [Fact]
+    public void OptionRuleRunAll_ShouldReturnOne()
+    {
+        var optionParams = new OptionRuleParameters()
+        {
+            Calls = false,
+            Puts = true,
+            AssignmentPercentage = .2,
+            MinimumPremium = .2,
+            PremiumPercentage = .005,
+            DaysToExpiration = 14,
+            MinOpenInterest = 100
+        };
+        var option = new Option()
+        {
+            Mid = .28,
+            Delta = -.1963,
+            StrikePrice = 51.5,
+            InTheMoney = true,
+            DaysToExpiration = 12,
+            OpenInterest = 820,
+            Type = OptionType.Put
+        };
+        _stock.Options.Add(option);
+
+        var validOptions = _stock.RuleRunAll(optionParams);
+        
+        validOptions.Options.Count.ShouldBe(1);
+
+    }
+
     [Theory]
     [InlineData(.33,29,true,14,-.1486,2946,100,.01,.2,7)]
     public void OptionRuleRunAll_SatisfiesConditions_ShouldReturnOne(double mid, double strike, bool inTheMoney,int daysToExpirationLimit, double delta,int openInterest,
