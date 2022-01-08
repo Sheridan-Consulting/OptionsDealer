@@ -5,6 +5,8 @@
     "debug.internalConsoleOptions": "neverOpen",
     "dotnet-test-explorer.testProjectPath": "tests/Tests.csproj",
     "azureFunctions.projectSubpath": "src/api",
-    "azureFunctions.preDeployTask": "publish (functions)"
+    "azureFunctions.preDeployTask": "publish (functions)",
+    "azureFunctions.showTargetFrameworkWarning": false,
+    "razor.disableBlazorDebugPrompt": true
     
 }

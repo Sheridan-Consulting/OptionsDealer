@@ -57,8 +57,12 @@ public static class HttpRequestDataExtensions
         {
             requestBody = await streamReader.ReadToEndAsync();
         }
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
 
-        var returnObject = JsonSerializer.Deserialize<T>(requestBody);
+        var returnObject = JsonSerializer.Deserialize<T>(requestBody,options);
         
         returnObject = (T)Convert.ChangeType(returnObject, typeof(T));
 

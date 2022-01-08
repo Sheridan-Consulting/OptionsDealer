@@ -1,16 +1,10 @@
-
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using System.Text.Json.Nodes;
 using api;
 using api.Models;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.OpenApi.Models;
 using Shared.Models;
-using Shared.Models.Rules;
 
 public class Functions
 {
@@ -24,6 +18,7 @@ public class Functions
     [OpenApiOperation(operationId: "option-tobuy", tags: new[] { "options" }, Summary = "Option To Buy", Description = "Takes in Single Stock Symbol and Default Option Rule Parameters", Visibility = OpenApiVisibilityType.Important)]
     [OpenApiParameter("Symbol", Type = typeof(string), In = ParameterLocation.Query, Visibility = OpenApiVisibilityType.Important)]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(Stock), Summary = "Stock response", Description = "This returns Stock and Options info that meet the rules")]
+    
     [Function("option-toBuy")]
     public async Task<HttpResponseData> Option_GetOptionToBuy([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "options/bysymbol/{symbol}")] HttpRequestData req,string symbol)
     {
@@ -31,7 +26,10 @@ public class Functions
         var optionsToBuy = _optionTrader.FindOptionsToBuy(stock);
         return await req.OkObjectResponse(stock);
     }
-    
+    [OpenApiOperation(operationId: "options-tobuy", tags: new[] { "options" }, Summary = "Options To Buy", Description = "Takes in List of Stock Symbols and Default Option Rule Parameters", Visibility = OpenApiVisibilityType.Important)]
+    [OpenApiRequestBody("application/json",typeof(GetOptionsToBuy))]
+    [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(Stock), Summary = "Stock response", Description = "This returns Stock and Options info that meet the rules")]
+
     [Function("options-toBuy")]
     public async Task<HttpResponseData> Option_GetOptionsToBuy(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuy")] HttpRequestData req)
@@ -48,6 +46,10 @@ public class Functions
 
         return await req.OkObjectResponse(optionsToBuy);
     }
+    [OpenApiOperation(operationId: "option-tobuy-withparameters", tags: new[] { "options" }, Summary = "Option To Buy with Parameters", Description = "Takes in a list of Stocks and Option Rule Parameters", Visibility = OpenApiVisibilityType.Important)]
+    [OpenApiRequestBody("application/json",typeof(GetOptionsToBuyWithParametersRequest))]
+    [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(Stock), Summary = "Stock response", Description = "This returns Stock and Options info that meet the rules")]
+
     [Function("options-toBuy-withparameters")]
     public async Task<HttpResponseData> Option_GetOptionsToBuyWithParameters(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuywithparameters")] HttpRequestData req)
