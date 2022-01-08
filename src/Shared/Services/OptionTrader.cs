@@ -12,18 +12,17 @@ namespace Shared.Services
 {
     public class OptionTrader : IOptionTrader
     {
+        private readonly OptionRuleParameters _ruleParameters;
         private readonly IBrokerageService _brokerageService;
-        private readonly IOptions<AppSettingsConfiguration> _options;
-
+       
         public OptionTrader(IBrokerageService brokerageService,IOptions<AppSettingsConfiguration> options)
         {
             _brokerageService = brokerageService;
-            _options = options;
+            _ruleParameters = options.Value.OptionRuleParameters;
         }
         public OptionTrader()
         {
-        }
-
+        } 
         public OptionTransaction BuyCallOptionContract(Stock stock, ContractSellCallConfiguration configuration)
         {
             throw new NotImplementedException();
@@ -62,7 +61,7 @@ namespace Shared.Services
         }
         public Stock FindOptionsToBuy(Stock stock)
         {
-            return stock.RuleRunAll(_options.Value.OptionRuleParameters);
+            return stock.RuleRunAll(_ruleParameters);
         }
 
         public Stock GetAllStockInfo(string symbol)
