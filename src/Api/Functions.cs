@@ -1,5 +1,7 @@
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using api;
@@ -32,12 +34,19 @@ public class Functions
 
     [Function("options-toBuy")]
     public async Task<HttpResponseData> Option_GetOptionsToBuy(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuy")] HttpRequestData req,
-        List<string> symbols)
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuy")] HttpRequestData req)
     {
-        var optionsToBuy = new List<Stock>();
+        var requestBody = string.Empty;
+        
+        using (var streamReader =  new  StreamReader(req.Body))
+        {
+            requestBody = await streamReader.ReadToEndAsync();
+        }
 
-        foreach (var symbol in symbols)
+        var getOptionsToBuy = JsonSerializer.Deserialize<GetOptionsToBuy>(requestBody);
+        var optionsToBuy = new List<Stock>();
+        
+        foreach (var symbol in getOptionsToBuy.Symbols)
         {
             var stock = _optionTrader.GetAllStockInfo(symbol);
             var optionToBuy = _optionTrader.FindOptionsToBuy(stock);
