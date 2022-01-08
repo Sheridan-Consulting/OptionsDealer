@@ -24,26 +24,12 @@ public class Functions
         var optionsToBuy = _optionTrader.FindOptionsToBuy(stock);
         return await req.OkObjectResponse(stock);
     }
-    [Function("option-toBuy-withparameters")]
-    public async Task<HttpResponseData> Option_GetOptionToBuyWithParameters([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/bysymbol/{symbol}")] HttpRequestData req,string symbol,OptionRuleParameters ruleParameters)
-    {
-        var stock = _optionTrader.GetAllStockInfo(symbol);
-        var optionsToBuy = _optionTrader.FindOptionsToBuy(stock,ruleParameters);
-        return await req.OkObjectResponse(stock);
-    }
-
+    
     [Function("options-toBuy")]
     public async Task<HttpResponseData> Option_GetOptionsToBuy(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuy")] HttpRequestData req)
     {
-        var requestBody = string.Empty;
-        
-        using (var streamReader =  new  StreamReader(req.Body))
-        {
-            requestBody = await streamReader.ReadToEndAsync();
-        }
-
-        var getOptionsToBuy = JsonSerializer.Deserialize<GetOptionsToBuy>(requestBody);
+        var getOptionsToBuy = await req.DeserializeRequest<GetOptionsToBuy>();
         var optionsToBuy = new List<Stock>();
         
         foreach (var symbol in getOptionsToBuy.Symbols)
@@ -57,9 +43,10 @@ public class Functions
     }
     [Function("options-toBuy-withparameters")]
     public async Task<HttpResponseData> Option_GetOptionsToBuyWithParameters(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuywithparameters")] HttpRequestData req,
-        GetOptionsToBuyWithParametersRequest getOptionsToBuyWithParametersRequest)
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuywithparameters")] HttpRequestData req)
     {
+
+        var getOptionsToBuyWithParametersRequest = await req.DeserializeRequest<GetOptionsToBuyWithParametersRequest>();
         var optionsToBuy = new List<Stock>();
 
         foreach (var symbol in getOptionsToBuyWithParametersRequest.Symbols)
