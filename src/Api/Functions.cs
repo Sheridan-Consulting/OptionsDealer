@@ -6,6 +6,9 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using api;
 using api.Models;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
+using Microsoft.OpenApi.Models;
 using Shared.Models;
 using Shared.Models.Rules;
 
@@ -17,6 +20,10 @@ public class Functions
     {
         _optionTrader = optionTrader;
     }
+    
+    [OpenApiOperation(operationId: "option-tobuy", tags: new[] { "options" }, Summary = "Option To Buy", Description = "Takes in Single Stock Symbol and Default Option Rule Parameters", Visibility = OpenApiVisibilityType.Important)]
+    [OpenApiParameter("Symbol", Type = typeof(string), In = ParameterLocation.Query, Visibility = OpenApiVisibilityType.Important)]
+    [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(Stock), Summary = "Stock response", Description = "This returns Stock and Options info that meet the rules")]
     [Function("option-toBuy")]
     public async Task<HttpResponseData> Option_GetOptionToBuy([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "options/bysymbol/{symbol}")] HttpRequestData req,string symbol)
     {

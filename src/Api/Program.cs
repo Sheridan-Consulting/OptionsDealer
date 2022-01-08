@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Shared.Interfaces;
 using Shared.Models.Configuration;
 using Shared.Services;
+using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 
 namespace api
 {
@@ -16,7 +17,7 @@ namespace api
         public static void Main()
         {
             var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults()
+                .ConfigureFunctionsWorkerDefaults(worker => worker.UseNewtonsoftJson())
                 .ConfigureAppConfiguration(c =>
                 {
                     c.SetBasePath(Directory.GetCurrentDirectory());
@@ -32,6 +33,7 @@ namespace api
                     s.Configure<AppSettingsConfiguration>(hostContext.Configuration.GetSection("AppSettingsConfiguration"));
 
                 })
+                .ConfigureOpenApi()
                 
                 .Build();
 

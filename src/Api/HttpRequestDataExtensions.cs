@@ -1,3 +1,9 @@
+using System;
+using System.IO;
+using System.Text.Json;
+using api.Models;
+using Shared.Models;
+
 namespace api;
 
 public static class HttpRequestDataExtensions
@@ -42,4 +48,20 @@ public static class HttpRequestDataExtensions
     /// <param name="request">The request.</param>
     /// <returns></returns>
     public static HttpResponseData NotFoundResponse(this HttpRequestData request) => request.CreateResponse(HttpStatusCode.NotFound);
+
+    public static async Task<T> DeserializeRequest<T>(this HttpRequestData request)
+    {
+        string requestBody = null;
+        
+        using (var streamReader =  new  StreamReader(request.Body))
+        {
+            requestBody = await streamReader.ReadToEndAsync();
+        }
+
+        var returnObject = JsonSerializer.Deserialize<T>(requestBody);
+        
+        returnObject = (T)Convert.ChangeType(returnObject, typeof(T));
+
+        return returnObject;
+    }
 }
