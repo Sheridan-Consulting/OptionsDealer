@@ -32,7 +32,7 @@ public class Functions
 
     [Function("options-toBuy")]
     public async Task<HttpResponseData> Option_GetOptionsToBuy(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuy")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Function, "post", Route = "options/tobuy")] HttpRequestData req)
     {
         var getOptionsToBuy = await req.DeserializeRequest<GetOptionsToBuy>();
         var optionsToBuy = new List<Stock>();
@@ -52,7 +52,7 @@ public class Functions
 
     [Function("options-toBuy-withparameters")]
     public async Task<HttpResponseData> Option_GetOptionsToBuyWithParameters(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "options/tobuywithparameters")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Function, "post", Route = "options/tobuywithparameters")] HttpRequestData req)
     {
 
         var getOptionsToBuyWithParametersRequest = await req.DeserializeRequest<GetOptionsToBuyWithParametersRequest>();
