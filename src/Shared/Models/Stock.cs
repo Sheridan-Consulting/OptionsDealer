@@ -13,5 +13,6 @@ namespace Shared.Models
         public double Cost { get; set; }
 
         public List<Option> Options { get; set; }
+        
     }
 }

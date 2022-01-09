@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Extensions.Options;
 using Shared.Enums;
 using Shared.Extensions;
@@ -61,7 +62,9 @@ namespace Shared.Services
         }
         public Stock FindOptionsToBuy(Stock stock)
         {
-            return stock.RuleRunAll(_ruleParameters);
+            var filteredStock = stock.RuleRunAll(_ruleParameters);
+            filteredStock.Options = filteredStock.Options.OrderBy(x => x.DaysToExpiration).ThenBy(o => o.StrikePrice).ToList();
+            return filteredStock;
         }
 
         public Stock GetAllStockInfo(string symbol)

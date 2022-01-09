@@ -2,12 +2,17 @@
 @using global::Shared.Models
 @inject HttpClient Http
 
-<PageTitle>Weather forecast</PageTitle>
+<PageTitle>Find Options by Single Symbol</PageTitle>
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
+<div><label> Enter a Stock Symbol: <input @bind="symbol" /></label><button @onclick="FindOptions">
+                                                                     Search
+                                                                 </button></div>
+@if (!string.IsNullOrEmpty(symbol))
+{
 @if (stock == null)
 {
     <p><em>Loading...</em></p>
@@ -29,22 +34,28 @@ else
         {
             <tr>
                 <td>@option.Symbol</td>
-                <td>@option.Mid</td>
-                <td>@option.StrikePrice</td>
-                <td>@option.ExpirationDate</td>
+                <td>$@option.Mid</td>
+                <td>$@option.StrikePrice</td>
+                <td>@option.ExpirationDate.ToString("MM/dd/yyyy")</td>
                 <td>@option.OpenInterest</td>
             </tr>
         }
         </tbody>
     </table>
 }
-
+}
 @code {
     private Stock? stock;
+    private string symbol;
 
     protected override async Task OnInitializedAsync()
     {
-        stock = await Http.GetFromJsonAsync<Stock>("http://localhost:7071/api/options/bysymbol/aapl");
+        
+    }
+
+    private async  Task FindOptions()
+    {
+        stock = await Http.GetFromJsonAsync<Stock>($"api/options/bysymbol/{symbol}");
     }
 
 }
