@@ -20,7 +20,7 @@ public class Functions
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(Stock), Summary = "Stock response", Description = "This returns Stock and Options info that meet the rules")]
     
     [Function("option-toBuy")]
-    public async Task<HttpResponseData> Option_GetOptionToBuy([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "options/bysymbol/{symbol}")] HttpRequestData req,string symbol)
+    public async Task<HttpResponseData> Option_GetOptionToBuy([HttpTrigger(AuthorizationLevel.Function, "get", Route = "options/bysymbol/{symbol}")] HttpRequestData req,string symbol)
     {
         var stock = _optionTrader.GetAllStockInfo(symbol);
         var optionsToBuy = _optionTrader.FindOptionsToBuy(stock);
