@@ -31,9 +31,7 @@ namespace Ally.Models
         [JsonPropertyName("contract_size")] public string ContractSize { get; set; }
 
         [JsonPropertyName("date")] public string Date { get; set; }
-
-        [JsonPropertyName("datetime")] public DateTime Datetime { get; set; }
-
+        
         [JsonPropertyName("days_to_expiration")]
         public string DaysToExpiration { get; set; }
 

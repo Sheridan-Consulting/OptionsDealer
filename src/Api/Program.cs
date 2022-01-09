@@ -17,7 +17,8 @@ namespace api
         public static void Main()
         {
             var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults(worker => worker.UseNewtonsoftJson())
+                //.ConfigureFunctionsWorkerDefaults(worker => worker.UseNewtonsoftJson())
+                .ConfigureFunctionsWorkerDefaults()
                 .ConfigureAppConfiguration(c =>
                 {
                     c.SetBasePath(Directory.GetCurrentDirectory());

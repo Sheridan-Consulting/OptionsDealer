@@ -71,7 +71,7 @@ public class AllyStock
     public string Date { get; set; }
 
     [JsonPropertyName("datetime")]
-    public DateTime Datetime { get; set; }
+    public string Datetime { get; set; }
 
     [JsonPropertyName("days_to_expiration")]
     public string DaysToExpiration { get; set; }
