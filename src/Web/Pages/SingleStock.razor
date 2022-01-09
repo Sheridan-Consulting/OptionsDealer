@@ -1,6 +1,50 @@
-@page "/SingleStock"
-<h3>SingleStock</h3>
+@page "/options/stock"
+@using global::Shared.Models
+@inject HttpClient Http
+
+<PageTitle>Weather forecast</PageTitle>
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (stock == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Stock</th>
+            <th>Mid Price</th>
+            <th>Strike Price</th>
+            <th>Expiration Date</th>
+            <th>Open Interest</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var option in stock.Options)
+        {
+            <tr>
+                <td>@option.Symbol</td>
+                <td>@option.Mid</td>
+                <td>@option.StrikePrice</td>
+                <td>@option.ExpirationDate</td>
+                <td>@option.OpenInterest</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
 
 @code {
-    
+    private Stock? stock;
+
+    protected override async Task OnInitializedAsync()
+    {
+        stock = await Http.GetFromJsonAsync<Stock>("http://localhost:7071/api/options/bysymbol/aapl");
+    }
+
 }

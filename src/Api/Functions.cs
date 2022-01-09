@@ -18,7 +18,6 @@ public class Functions
     [OpenApiOperation(operationId: "option-tobuy", tags: new[] { "options" }, Summary = "Option To Buy", Description = "Takes in Single Stock Symbol and Default Option Rule Parameters", Visibility = OpenApiVisibilityType.Important)]
     [OpenApiParameter("Symbol", Type = typeof(string), In = ParameterLocation.Query, Visibility = OpenApiVisibilityType.Important)]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(Stock), Summary = "Stock response", Description = "This returns Stock and Options info that meet the rules")]
-    
     [Function("option-toBuy")]
     public async Task<HttpResponseData> Option_GetOptionToBuy([HttpTrigger(AuthorizationLevel.Function, "get", Route = "options/bysymbol/{symbol}")] HttpRequestData req,string symbol)
     {
