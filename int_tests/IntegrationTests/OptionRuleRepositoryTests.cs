@@ -58,6 +58,50 @@ public class OptionRuleRepositoryTests : IClassFixture<DbFixture>
         var loadedSymbols = await sut.GetOptionRulesByUserId(symbols.UserId);
         loadedSymbols.Count.ShouldBeGreaterThan(0);
     }
+
+    [Fact]
+    public async Task Update_ShouldUpdateSymbols()
+    {
+        var sut = new OptionRuleRepository(_fixture.Database);
+        
+        var optionRule = new OptionRule()
+        {
+            UserId = "1",
+            Symbols = new List<string>() {"AAPL", "MSFT"},
+            OptionRuleParameters = new OptionRuleParameters()
+        };
+
+        var id = await sut.CreateOptionRule(optionRule);
+        id.ShouldNotBeNull();
+        
+        optionRule.Symbols.Add("F");
+
+        var updateOptionRule = await sut.UpdateOptionRuleSymbols(id, optionRule.Symbols);
+        updateOptionRule.Symbols.Count.ShouldBe(3);
+        updateOptionRule.Symbols.ShouldContain("F");
+    }
+    [Fact]
+    public async Task Update_ShouldUpdateRuleParameters()
+    {
+        var sut = new OptionRuleRepository(_fixture.Database);
+        
+        var optionRule = new OptionRule()
+        {
+            UserId = "1",
+            Symbols = new List<string>() {"AAPL", "MSFT"},
+            OptionRuleParameters = new OptionRuleParameters()
+        };
+
+        var id = await sut.CreateOptionRule(optionRule);
+        id.ShouldNotBeNull();
+
+        optionRule.OptionRuleParameters.MinOpenInterest = 100;
+
+        var updateOptionRule = await sut.UpdateOptionRuleRuleParameters(id, optionRule.OptionRuleParameters);
+        updateOptionRule.OptionRuleParameters.MinOpenInterest.ShouldBe(100);
+        updateOptionRule.Symbols.Count.ShouldBePositive();
+        
+    }
     
     /*
     [Fact]

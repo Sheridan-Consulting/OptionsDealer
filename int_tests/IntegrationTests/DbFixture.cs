@@ -33,8 +33,8 @@ namespace IntegrationTests
 
         public void Dispose()
         { 
-           var client = new MongoClient(this.OptionTraderDatabaseSettings.ConnectionString);
-           client.DropDatabase(this.OptionTraderDatabaseSettings.DatabaseName);
+           //var client = new MongoClient(this.OptionTraderDatabaseSettings.ConnectionString);
+           //client.DropDatabase(this.OptionTraderDatabaseSettings.DatabaseName);
         }
     }
 }

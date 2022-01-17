@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Shared.Models.Data;
+using Shared.Models.Rules;
 
 namespace Shared.Repositories;
 
@@ -11,6 +12,7 @@ public interface IOptionRuleRepository
 
     Task<string> CreateOptionRule(OptionRule model);
 
-    Task<OptionRule> UpdateOptionRule(string id, OptionRule model);
+    Task<OptionRule> UpdateOptionRuleSymbols(string id, List<string> model);
+    Task<OptionRule> UpdateOptionRuleRuleParameters(string id, OptionRuleParameters optionRuleParameters);
     Task DeleteOptionRule(string id);
 }
