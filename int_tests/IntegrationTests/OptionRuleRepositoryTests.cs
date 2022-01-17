@@ -1,3 +1,4 @@
+using AutoFixture.Xunit2;
 using Data;
 using Data.Repository;
 using Shared.Models.Data;
@@ -29,15 +30,13 @@ public class OptionRuleRepositoryTests : IClassFixture<DbFixture>
             OptionRuleParameters = new OptionRuleParameters()
         };
 
-        var loadedSymbols = await sut.GetOptionRulesByUserId(symbols.UserId);
-        loadedSymbols.ShouldBeNull();
-
-        var id = await sut.CreateOptionRule(symbols);
-        id.ShouldNotBeNull();
+        var optionRule = await sut.CreateOptionRule(symbols);
+        optionRule.ShouldNotBeNull();
         
-        var loadedSymbol = await sut.GetOptionRuleById(id);
+        var loadedSymbol = await sut.GetOptionRuleById(optionRule.OptionRuleId);
         loadedSymbol.ShouldNotBeNull();
         loadedSymbol.Symbols.Count.ShouldBe(2);
+        loadedSymbol.UserId.ShouldBe("1");
         loadedSymbol.UserId.ShouldBe(symbols.UserId);
     }
 
@@ -48,7 +47,7 @@ public class OptionRuleRepositoryTests : IClassFixture<DbFixture>
 
         var symbols = new OptionRule()
         {
-            UserId = "1",
+            UserId = "2",
             Symbols = new List<string>() {"AAPL", "MSFT"},
             OptionRuleParameters = new OptionRuleParameters()
         };
@@ -57,6 +56,23 @@ public class OptionRuleRepositoryTests : IClassFixture<DbFixture>
         
         var loadedSymbols = await sut.GetOptionRulesByUserId(symbols.UserId);
         loadedSymbols.Count.ShouldBeGreaterThan(0);
+        loadedSymbols[0].UserId.ShouldBe("2");
+    }
+
+    [Theory,AutoData]
+    public async Task Create_OptionRuleIdShouldNotBeNull(string userid)
+    {
+        var sut = new OptionRuleRepository(_fixture.Database);
+        
+        var optionRuleData = new OptionRule()
+        {
+            UserId = userid,
+            Symbols = new List<string>() {"AAPL", "MSFT"},
+            OptionRuleParameters = new OptionRuleParameters()
+        };
+
+        var optionRule = await sut.CreateOptionRule(optionRuleData);
+        optionRule.OptionRuleId.ShouldNotBeNull();
     }
 
     [Fact]
@@ -66,19 +82,20 @@ public class OptionRuleRepositoryTests : IClassFixture<DbFixture>
         
         var optionRule = new OptionRule()
         {
-            UserId = "1",
+            UserId = "3",
             Symbols = new List<string>() {"AAPL", "MSFT"},
             OptionRuleParameters = new OptionRuleParameters()
         };
 
-        var id = await sut.CreateOptionRule(optionRule);
-        id.ShouldNotBeNull();
+        var optionRuleCreate = await sut.CreateOptionRule(optionRule);
+        optionRuleCreate.ShouldNotBeNull();
         
         optionRule.Symbols.Add("F");
 
-        var updateOptionRule = await sut.UpdateOptionRuleSymbols(id, optionRule.Symbols);
+        var updateOptionRule = await sut.UpdateOptionRule(optionRuleCreate.OptionRuleId, optionRule);
         updateOptionRule.Symbols.Count.ShouldBe(3);
         updateOptionRule.Symbols.ShouldContain("F");
+        updateOptionRule.UserId.ShouldBe("3");
     }
     [Fact]
     public async Task Update_ShouldUpdateRuleParameters()
@@ -87,43 +104,46 @@ public class OptionRuleRepositoryTests : IClassFixture<DbFixture>
         
         var optionRule = new OptionRule()
         {
-            UserId = "1",
+            UserId = "4",
             Symbols = new List<string>() {"AAPL", "MSFT"},
             OptionRuleParameters = new OptionRuleParameters()
         };
 
-        var id = await sut.CreateOptionRule(optionRule);
-        id.ShouldNotBeNull();
+        var optionRuleResponse = await sut.CreateOptionRule(optionRule);
+        optionRuleResponse.ShouldNotBeNull();
 
         optionRule.OptionRuleParameters.MinOpenInterest = 100;
 
-        var updateOptionRule = await sut.UpdateOptionRuleRuleParameters(id, optionRule.OptionRuleParameters);
+        var updateOptionRule = await sut.UpdateOptionRule(optionRuleResponse.OptionRuleId, optionRule);
         updateOptionRule.OptionRuleParameters.MinOpenInterest.ShouldBe(100);
         updateOptionRule.Symbols.Count.ShouldBePositive();
+        updateOptionRule.UserId.ShouldBe("4");
         
     }
-    
-    /*
-    [Fact]
-    public async Task CreateAsync_ShouldThrowIfUserExist()
+
+    [Theory,AutoData]
+    public async Task Delete_ShouldDeleteRecord(string userId)
     {
-        var sut = new OptionFilterSymbolsRepository(_fixture.DbContext);
-
-        var symbols = new OptionFilterSymbol()
+        var sut = new OptionRuleRepository(_fixture.Database);
+        
+        var optionRule = new OptionRule()
         {
-            User = "2",
-            Symbols = new List<string>() {"AAPL", "MSFT","F"}
+            UserId = userId,
+            Symbols = new List<string>() {"AAPL", "MSFT"},
+            OptionRuleParameters = new OptionRuleParameters()
         };
-        await sut.CreateAsync(symbols);
 
-        var symbols2 = new OptionFilterSymbol()
-        {
-            User = "2",
-            Symbols = new List<string>() {"AAPL", "F"}
-        };
-       
-        var ex = await Assert.ThrowsAsync<MongoDB.Driver.MongoWriteException>(async () => await sut.CreateAsync(symbols2));
-        ex.Message.Contains(symbols.User);
+        var optionRuleResponse = await sut.CreateOptionRule(optionRule);
+        optionRuleResponse.ShouldNotBeNull();
+
+        await sut.DeleteOptionRule(optionRuleResponse.OptionRuleId);
+
+        var record = await sut.GetOptionRuleById(optionRuleResponse.OptionRuleId);
+        record.ShouldBeNull();
+        
+
+
     }
-    */
+    
+   
 }

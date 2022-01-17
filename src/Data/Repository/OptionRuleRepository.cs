@@ -26,51 +26,27 @@ public class OptionRuleRepository : MongoRepository<MongoOptionRule>, IOptionRul
         return dataModel.ToList().FromList();
     }
 
-    public async Task<string> CreateOptionRule(OptionRule model)
+    public async Task<OptionRule> CreateOptionRule(OptionRule model)
     {
         var mongoOptionRule = model.To();
         await Collection.InsertOneAsync(mongoOptionRule);
-        return mongoOptionRule.Id;
+        return mongoOptionRule.From();
     }
 
-    public async Task<OptionRule> UpdateOptionRuleRuleParameters(string id, OptionRuleParameters optionRuleParameters)
+    public async Task<OptionRule> UpdateOptionRule(string id, OptionRule optionRule)
     {
-        var filter = Builders<MongoOptionRule>.Filter.Eq("_id",id);
-
-        var update = Builders<MongoOptionRule>.Update
-            .SetOnInsert(x => x.OptionRuleParameters, optionRuleParameters);
-
-        var options = new FindOneAndUpdateOptions<MongoOptionRule>()
-        {
-            IsUpsert = true,
-            ReturnDocument = ReturnDocument.After
-        };
+        optionRule.OptionRuleId = id;
+        var dataModel = optionRule.To();
         
-        var optionRule = await Collection.FindOneAndUpdateAsync(filter, update,options);
-
+        var result = await Collection.ReplaceOneAsync(x => x.Id == id, dataModel);
+        
         return optionRule;
     }
 
-    public async Task<OptionRule> UpdateOptionRuleSymbols(string id, List<string> symbols)
+   
+
+    public async Task DeleteOptionRule(string id)
     {
-        var filter = Builders<MongoOptionRule>.Filter.Eq("_id",id);
-
-        var update = Builders<MongoOptionRule>.Update
-            .SetOnInsert(x => x.Symbols, symbols);
-
-        var options = new FindOneAndUpdateOptions<MongoOptionRule>()
-        {
-            IsUpsert = true,
-            ReturnDocument = ReturnDocument.After
-        };
-        
-        var optionRule = await Collection.FindOneAndUpdateAsync(filter, update,options);
-
-        return optionRule;
-    }
-
-    public Task DeleteOptionRule(string id)
-    {
-        throw new NotImplementedException();
+        await Collection.DeleteOneAsync(x => x.Id == id);
     }
 }

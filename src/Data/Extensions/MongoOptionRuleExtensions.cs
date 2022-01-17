@@ -7,6 +7,7 @@ public static class MongoOptionRuleExtensions
 {
     public static OptionRule From(this MongoOptionRule mongoOptionRule)
     {
+        if (mongoOptionRule == null) return null;
         return new OptionRule()
         {
             OptionRuleId = mongoOptionRule.Id,
@@ -22,7 +23,8 @@ public static class MongoOptionRuleExtensions
         {
             Symbols = optionRule.Symbols,
             UserId = optionRule.UserId,
-            OptionRuleParameters = optionRule.OptionRuleParameters
+            OptionRuleParameters = optionRule.OptionRuleParameters,
+            Id = optionRule.OptionRuleId
         };
     }
 
