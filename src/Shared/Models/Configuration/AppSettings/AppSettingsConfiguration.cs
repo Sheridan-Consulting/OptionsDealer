@@ -6,4 +6,5 @@ public class AppSettingsConfiguration
 {
     public AllyAppSettings Ally { get; set; }
     public OptionRuleParameters OptionRuleParameters { get; set; }
+    public ConnectionStrings ConnectionStrings { get; set; }
 }

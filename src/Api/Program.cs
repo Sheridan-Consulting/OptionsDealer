@@ -2,6 +2,9 @@
 using System.Configuration;
 using System.IO;
 using Ally;
+using Data;
+using Data.Repository;
+using Data.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +12,7 @@ using Shared.Interfaces;
 using Shared.Models.Configuration;
 using Shared.Services;
 using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
+using Shared.Repositories;
 
 namespace api
 {
@@ -30,6 +34,9 @@ namespace api
                 {
                     s.AddSingleton<IBrokerageService, AllyBrokerageService>();
                     s.AddSingleton<IOptionTrader, OptionTrader>();
+                    s.AddSingleton<IDataService, DataService>();
+                    s.AddSingleton<IOptionRuleRepository, OptionRuleRepository>();
+                    s.AddSingleton<MongoDbContext>();
                     s.AddOptions();
                     s.Configure<AppSettingsConfiguration>(hostContext.Configuration.GetSection("AppSettingsConfiguration"));
 

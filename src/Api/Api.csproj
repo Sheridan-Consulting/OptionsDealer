@@ -27,6 +27,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Ally\Ally.csproj" />
+		<ProjectReference Include="..\Data\Data.csproj" />
 		<ProjectReference Include="..\Shared\Shared.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
