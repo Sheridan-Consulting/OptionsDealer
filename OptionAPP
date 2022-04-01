@@ -1,14 +1,20 @@
-<mxfile host="app.diagrams.net" modified="2022-04-01T22:02:31.461Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36" etag="nIeCz3K2NMDn6-KHaBTo" version="17.4.0" type="github">
-  <diagram id="jYzhRziCTN1lpxamFD8d" name="Page-1">
+<mxfile host="app.diagrams.net" modified="2022-04-01T22:08:16.652Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36" etag="00ynapbZb1FJTBL9Vp4N" version="17.4.0" type="github">
+  <diagram id="jYzhRziCTN1lpxamFD8d" name="Option Trader">
     <mxGraphModel dx="2062" dy="1154" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-2" target="hrzyJyYVdkjzcJTq5qSx-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-2" value="ALLY" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
-          <mxGeometry x="980" y="260" width="50" height="48" as="geometry" />
+          <mxGeometry x="780" y="400" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-4" target="hrzyJyYVdkjzcJTq5qSx-23">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-4" value="TD Ameritrade" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
-          <mxGeometry x="980" y="170" width="50" height="48" as="geometry" />
+          <mxGeometry x="780" y="310" width="50" height="48" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-5" target="hrzyJyYVdkjzcJTq5qSx-2">
           <mxGeometry relative="1" as="geometry" />
@@ -17,19 +23,19 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-5" value="Option Parser" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
-          <mxGeometry x="830" y="280" width="50" height="48" as="geometry" />
+          <mxGeometry x="630" y="420" width="50" height="48" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-8" value="Takes in Date Range and Translates other services to standard format" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="770" y="90" width="140" height="152" as="geometry" />
+          <mxGeometry x="580" y="300" width="140" height="152" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-9" target="hrzyJyYVdkjzcJTq5qSx-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-9" value="Option Filter" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
-          <mxGeometry x="670" y="287" width="50" height="48" as="geometry" />
+          <mxGeometry x="470" y="427" width="50" height="48" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-11" value="Filters option data by passed in parameters" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="600" y="106" width="140" height="120" as="geometry" />
+          <mxGeometry x="425" y="348" width="140" height="120" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-14" target="hrzyJyYVdkjzcJTq5qSx-2">
           <mxGeometry relative="1" as="geometry" />
@@ -38,7 +44,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-14" value="Stock Parser" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
-          <mxGeometry x="830" y="390" width="50" height="48" as="geometry" />
+          <mxGeometry x="630" y="530" width="50" height="48" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.467;entryY=1.181;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.293;exitY=0.153;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-18" target="hrzyJyYVdkjzcJTq5qSx-19">
           <mxGeometry relative="1" as="geometry" />
@@ -50,10 +56,28 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-18" value="Option Filter API" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
-          <mxGeometry x="479" y="350" width="50" height="48" as="geometry" />
+          <mxGeometry x="279" y="490" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-19" target="hrzyJyYVdkjzcJTq5qSx-26">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hrzyJyYVdkjzcJTq5qSx-19" value="User Settings" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;" vertex="1" parent="1">
-          <mxGeometry x="470" y="122" width="50" height="48" as="geometry" />
+          <mxGeometry x="270" y="262" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-23" value="API Keys" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=secret;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="930" y="366" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-26" value="" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image;image=img/lib/active_directory/database.svg;" vertex="1" parent="1">
+          <mxGeometry x="270" y="170" width="50" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="hrzyJyYVdkjzcJTq5qSx-28" target="hrzyJyYVdkjzcJTq5qSx-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-28" value="" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=svc" vertex="1" parent="1">
+          <mxGeometry x="130" y="490" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="hrzyJyYVdkjzcJTq5qSx-30" value="Take in Symbol and Returns Information about&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="625" y="610" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
